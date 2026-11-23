@@ -1,0 +1,29 @@
+/**
+ * Wrangler 設定
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "blueribbon-demo",
+	"main": "worker/index.ts",
+	"compatibility_date": "2026-11-13",
+	"assets": {
+		// 静的アセットにない URL は index.html を返し、React Router に任せる
+		"not_found_handling": "single-page-application",
+		// /api/* だけは常に Worker で処理する（将来の予約フォーム API 用）
+		"run_worker_first": ["/api/*"]
+	},
+	"observability": {
+		"enabled": true
+	},
+	"upload_source_maps": true,
+	// プルリクエストのプレビュー（Workers Builds の wrangler preview）に必要。中身は空でよい
+	"previews": {}
+	/**
+	 * 予約フォーム実装時に追加する予定のバインディング（例）
+	 * D1:        "d1_databases": [{ "binding": "DB", "database_name": "kajika", "database_id": "..." }]
+	 * Turnstile: シークレットは `wrangler secret put TURNSTILE_SECRET_KEY` で登録
+	 * メール:    "send_email": [{ "name": "MAILER", ... }]
+	 * 追加したら `npm run cf-typegen` で worker-configuration.d.ts を再生成する
+	 */
+}

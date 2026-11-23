@@ -1,0 +1,153 @@
+@import 'tailwindcss';
+
+/*
+ * 色のトークン（色コードはここだけに書き、ページ側は bg-kaki などのクラスで使う）
+ * 基調：生成り色と木の色／差し色（kaki：電話ボタンなど）と基調色（mori：見出し・フッター）
+ * トークン名はどの宿の見本でも同じ。kaki と mori の値は、src/inn.config.ts の theme で下の組み合わせから選ぶ
+ * （<html data-theme="…"> は vite.config.ts が inn.config.ts の theme から書き込む）
+ * 文字と背景の組み合わせのコントラスト比は scripts/contrast.mjs で計算して確認する（WCAG AA 4.5:1 以上）
+ */
+@theme {
+  --font-sans: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+  /* 見出し：日本語は明朝、英語の添え字（eyebrow）はセリフ体（azami-demo のエディトリアルな見出しにならう） */
+  --font-serif: 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+
+  /* 背景（白。Yuto の指示、2026年11月21日）。cream はページ、paper はヘッダーなどの背景 */
+  --color-cream: #ffffff;
+  --color-paper: #ffffff;
+  --color-line: #ddd1bd;
+
+  /* 文字 */
+  --color-ink: #2b2520;
+  --color-ink-soft: #544a41;
+
+  /* 木 */
+  --color-wood: #7a5a3c;
+  --color-wood-dark: #5a4129;
+  --color-wood-light: #ede1cc;
+
+  /* 差し色（電話ボタンなど）と基調色（見出し・フッター）。値は下の data-theme で宿ごとに切り替える（初期値は mori） */
+  --color-kaki: #a3461c;
+  --color-kaki-dark: #833614;
+  --color-kaki-light: #fbe6d6;
+  --color-mori: #2f5240;
+  --color-mori-dark: #1f3a2c;
+  --color-mori-light: #e1ebe0;
+
+  /* 仮の画像枠だけに使う色 */
+  --color-sky: #56717c;
+  --color-moss: #5d6b43;
+}
+
+/*
+ * 色の組み合わせ（inn.config.ts の theme）。足すときは src/content/schema.ts の ThemeName にも足し、
+ * node scripts/contrast.mjs で全部の組み合わせが AA（4.5:1）以上か確かめる
+ */
+/* umi：海の紺 × 夕日の朱 */
+:root[data-theme='umi'] {
+  --color-kaki: #b0381c;
+  --color-kaki-dark: #8a2a13;
+  --color-kaki-light: #fbe3d8;
+  --color-mori: #1f4466;
+  --color-mori-dark: #14304b;
+  --color-mori-light: #e2eaf2;
+}
+/* nagisa：海の青緑 × 砂浜の茶 */
+:root[data-theme='nagisa'] {
+  --color-kaki: #9b531a;
+  --color-kaki-dark: #7a3f12;
+  --color-kaki-light: #f8e6d3;
+  --color-mori: #135e6e;
+  --color-mori-dark: #0c4450;
+  --color-mori-light: #ddeef0;
+}
+/* mori：森の緑 × 柿色（初期値と同じ） */
+:root[data-theme='mori'] {
+  --color-kaki: #a3461c;
+  --color-kaki-dark: #833614;
+  --color-kaki-light: #fbe6d6;
+  --color-mori: #2f5240;
+  --color-mori-dark: #1f3a2c;
+  --color-mori-light: #e1ebe0;
+}
+/* yama：山の緑 × 炭の茶 */
+:root[data-theme='yama'] {
+  --color-kaki: #8a4a26;
+  --color-kaki-dark: #6b3819;
+  --color-kaki-light: #f4e3d6;
+  --color-mori: #34503a;
+  --color-mori-dark: #22382a;
+  --color-mori-light: #e3ebe0;
+}
+/* sora：空色 × 花の色 */
+:root[data-theme='sora'] {
+  --color-kaki: #b23a5e;
+  --color-kaki-dark: #8c2a49;
+  --color-kaki-light: #fbe1ea;
+  --color-mori: #1d5878;
+  --color-mori-dark: #123e57;
+  --color-mori-light: #e0edf4;
+}
+
+@layer base {
+  html {
+    /* 本文 15px 基準。ブラウザの文字サイズ設定にも追従する */
+    font-size: 93.75%;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+    font-synthesis-weight: none;
+    /* 日本語を文節で改行する（対応ブラウザのみ）。長い言葉ははみ出さないよう折り返す */
+    word-break: auto-phrase;
+    overflow-wrap: break-word;
+    line-break: strict;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    text-wrap: balance;
+  }
+
+  :root {
+    --focus-ring: var(--color-mori-dark);
+  }
+
+  .surface-dark {
+    --focus-ring: var(--color-kaki-light);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
