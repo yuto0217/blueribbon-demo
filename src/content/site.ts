@@ -1,10 +1,21 @@
 /** 宿の基本情報（src/inn.config.ts から作る。ここは書き換えない） */
 import { inn } from '../inn.config'
 import { useLang, type Lang } from './i18n'
-import type { InnPoint, NavItem, SiteImage } from './schema'
+import type { InnDetail, InnDetailEnglish, InnPoint, NavItem, SiteImage } from './schema'
 
 /** 英語の表示があるか（あるときだけ言語の切り替えボタンを出す） */
 export const hasEnglish = Boolean(inn.en)
+
+/** お部屋・料理・温泉の紹介を、英語の訳があれば重ねる */
+function translateDetail(detail: InnDetail | null, t: InnDetailEnglish | null | undefined): InnDetail | null {
+  if (!detail || !t) return detail
+  return {
+    title: t.title,
+    lead: t.lead,
+    features: detail.features.map((f, i) => t.features[i] ?? f),
+    photos: detail.photos.map((photo, j) => ({ ...photo, ...t.photos[j] })),
+  }
+}
 
 function buildSite(lang: Lang) {
   const en = lang === 'en' ? inn.en : null
@@ -32,6 +43,16 @@ function buildSite(lang: Lang) {
     showHeroBooking: inn.heroBooking ?? true,
     points,
     pointsTitle: en ? en.pointsTitle : inn.pointsTitle,
+    /** 宿の魅力の後に続く紹介（お部屋 → 料理 → 温泉・お風呂の順。null のものは出さない） */
+    details: [
+      { key: 'rooms', eyebrow: 'Rooms', detail: translateDetail(inn.rooms, en?.rooms) },
+      { key: 'cuisine', eyebrow: 'Cuisine', detail: translateDetail(inn.cuisine, en?.cuisine) },
+      { key: 'bath', eyebrow: 'Bath', detail: translateDetail(inn.bath, en?.bath) },
+    ].flatMap(({ detail, ...rest }) => (detail ? [{ ...rest, detail: { ...detail, photos: detail.photos.slice(0, 3) } }] : [])) as {
+      key: 'rooms' | 'cuisine' | 'bath'
+      eyebrow: string
+      detail: InnDetail
+    }[],
     access: en ? en.access : inn.access,
     /** 住所は地図の検索に使うので日本語のまま */
     address: inn.address,

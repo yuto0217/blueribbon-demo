@@ -3,10 +3,11 @@ import { useSite } from '../../content/site'
 import { MapEmbed } from '../sections/MapEmbed'
 import { Icon } from '../ui/Icon'
 import { Container, Section, SectionHeading } from '../ui/Section'
+import { DetailSections } from './DetailSections'
 import { PointsSlider } from './PointsSlider'
 
 /**
- * ヒーローの下に続く、宿の魅力（魅力ごとに番号・見出し・説明と、横幅いっぱいに流れる写真）とアクセス（地図つき）
+ * ヒーローの下に続く、宿の魅力（魅力ごとに番号・見出し・説明と、横幅いっぱいに流れる写真）→ お部屋・料理・温泉の紹介 → アクセス（地図つき）
  * 予約のボタンはヘッダー（パソコン）と画面下（スマホ）に出している
  */
 export function HeroInfo() {
@@ -51,8 +52,10 @@ export function HeroInfo() {
         </section>
       )}
 
+      <DetailSections />
+
       {(site.access || site.address) && (
-        <Section labelledBy="home-access" className={site.points.length > 0 ? 'pt-0 sm:pt-0' : ''}>
+        <Section labelledBy="home-access" className={site.points.length > 0 || site.details.length > 0 ? 'pt-0 sm:pt-0' : ''}>
           <SectionHeading id="home-access" title={ui.access} eyebrow="Access" />
           <div className="grid gap-6">
             {site.access && (

@@ -43,6 +43,37 @@ export interface InnPoint {
   photos: SiteImage[]
 }
 
+/** お部屋・料理・温泉の紹介の特徴1つ（短い見出しと、事実の説明） */
+export interface InnDetailFeature {
+  /** 特徴の見出し（短い言葉。例：「全7室の洋室」） */
+  title: string
+  /** 見出しの下の説明（1文。事実だけで、誇張はしない）。なければ null */
+  text: string | null
+}
+
+/**
+ * 宿の魅力の後に続く、お部屋・料理・温泉・お風呂の紹介（タブの中身のページは作らず、トップに短くまとめて出す）
+ * 情報収集の「客室」「料理」「温泉・風呂」の事実だけで書く。口コミの文は写さない。分からないことは書かない
+ */
+export interface InnDetail {
+  /** 見出し（ふつうは「お部屋」「お料理」「温泉・お風呂」。宿の呼び方があれば合わせる。例：「露天風呂」） */
+  title: string
+  /** 見出しの下の紹介文（1〜2文）。なければ null */
+  lead: string | null
+  /** 特徴・魅力のポイント（2〜4個） */
+  features: InnDetailFeature[]
+  /** 写真（1〜3枚。見本の間はラベル付きの色の枠。2枚以上で自動で切り替わる） */
+  photos: SiteImage[]
+}
+
+/** InnDetail の英語訳（日本語と同じ順） */
+export interface InnDetailEnglish {
+  title: string
+  lead: string | null
+  features: { title: string; text: string | null }[]
+  photos: { label: string; alt: string }[]
+}
+
 /** 英語の表示（言語の切り替えボタンで英語を選んだとき）。日本語と同じ事実だけを訳す。書かない項目は日本語のまま */
 export interface InnEnglish {
   name: string
@@ -60,6 +91,10 @@ export interface InnEnglish {
   pointsTitle: string | null
   access: string | null
   bookingLabel: string
+  /** お部屋・料理・温泉の紹介の訳（省略すると日本語のまま） */
+  rooms?: InnDetailEnglish | null
+  cuisine?: InnDetailEnglish | null
+  bath?: InnDetailEnglish | null
 }
 
 export interface InnConfig {
@@ -99,6 +134,16 @@ export interface InnConfig {
   points: InnPoint[]
   /** 宿の魅力の見出し（例：「太郎の魅力」）。null なら見出しを出さない */
   pointsTitle: string | null
+  /**
+   * 宿の魅力の後に続く紹介（この順に出す）。情報収集の事実だけで書く
+   * - rooms：お部屋。どの宿でも書く（部屋の種類・広さ・定員・設備・眺め）
+   * - cuisine：料理。料理が宿の強み（口コミで多く褒められている・名物料理がある）のときだけ。そうでなければ null
+   * - bath：温泉・お風呂。温泉・お風呂が宿の強みのときだけ。そうでなければ null
+   * 宿の魅力（points）と同じ説明はくり返さず、時間・設備・内容などの具体的な事実を features に並べる
+   */
+  rooms: InnDetail | null
+  cuisine: InnDetail | null
+  bath: InnDetail | null
   /** アクセス（地名と最寄り駅・バス停・IC からの時間）。例：'伊豆急下田駅からバス約90分「雲見温泉」下車、歩いて2分' */
   access: string | null
   /** 住所（アクセスの Google マップに使う。分からない間は null で、地図を出さない） */
