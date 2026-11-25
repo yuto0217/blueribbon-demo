@@ -76,9 +76,9 @@ export const inn: InnConfig = {
     lead: null,
     features: [
       { title: '人数', text: '2〜5名のお部屋があります。' },
-      { title: 'ベッド', text: 'ツイン、5ベッド、ダブルのお部屋があります。' },
+      { title: 'ベッド', text: 'ツイン、セミダブル、ダブル、5ベッド' },
       { title: 'Wi-Fi', text: '全室でお使いいただけます。' },
-      { title: 'ご注意事項', text: '館内は禁煙です。ペットとのご宿泊はできません。' },
+      { title: 'ご注意事項', text: '館内は禁煙、ペットはご遠慮ください。' },
     ],
     photos: [
       { label: 'ツインのお部屋の写真', alt: 'ベッドが2つの洋室', tone: 'wood' },
@@ -89,9 +89,9 @@ export const inn: InnConfig = {
     title: 'お料理',
     lead: null,
     features: [
-      { title: '夕食は洋食のコース料理', text: 'オードブルからデザート・コーヒーまでのコースです。' },
+      { title: '夕食は洋食のコース料理', text: 'オードブルからデザートまでのコース' },
       { title: 'アレルギー・苦手な食材', text: 'ご予約時にお知らせください。' },
-      { title: 'お子様のお食事', text: '小学2年生くらいまでの量でご用意できます。' },
+      { title: 'お子様のお食事', text: '小学2年生くらいまでの量です。' },
     ],
     photos: [
       { label: 'コース料理のオードブルの写真', alt: '洋食のコースのオードブル', tone: 'kaki' },
@@ -102,8 +102,8 @@ export const inn: InnConfig = {
     title: 'お風呂',
     lead: null,
     features: [
-      { title: 'お風呂は3つ', text: '滝のある露天風呂が1つ、内風呂が2つです。' },
-      { title: '貸切可能', text: '空いていれば、内鍵をかけて貸切でお使いいただけます。' },
+      { title: 'お風呂は3つ', text: '露天風呂が1つ、内風呂が2つです。' },
+      { title: '貸切可能', text: '空いていれば貸切でお使いいただけます。' },
       { title: 'お風呂付きのお部屋は1室', text: '103号室はユニットバス付きです。' },
     ],
     photos: [
