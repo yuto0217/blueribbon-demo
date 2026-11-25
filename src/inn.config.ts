@@ -78,6 +78,8 @@ export const inn: InnConfig = {
       { title: '2名用から5名用のお部屋があります', text: 'ツインから5ベッドまでの洋室です。' },
       { title: 'すべてベッドのお部屋', text: null },
       { title: 'Wi-Fiございます', text: '全室でお使いいただけます。' },
+      { title: 'ペットとのご宿泊はできません', text: '車の中でのお泊まりも含め、お受けしておりません。' },
+      { title: '館内は禁煙です', text: null },
     ],
     photos: [
       { label: 'ツインのお部屋の写真', alt: 'ベッドが2つの洋室', tone: 'wood' },
