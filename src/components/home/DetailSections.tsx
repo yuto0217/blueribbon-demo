@@ -1,6 +1,5 @@
 import { useSite } from '../../content/site'
 import { Icon } from '../ui/Icon'
-import { Phrase } from '../ui/Phrase'
 import { Container, SectionHeading } from '../ui/Section'
 import { PointsSlider } from './PointsSlider'
 
@@ -40,8 +39,8 @@ export function DetailSections() {
                       <li key={j} className="flex items-start gap-3">
                         <Icon name="check" className="mt-0.5 size-6 shrink-0 text-kaki" />
                         <div className="min-w-0">
-                          <p className="text-lg leading-snug font-medium text-mori-dark"><Phrase text={feature.title} /></p>
-                          {feature.text && <p className="mt-1 leading-relaxed text-ink-soft"><Phrase text={feature.text} /></p>}
+                          <p className="text-lg leading-snug font-medium text-mori-dark">{feature.title}</p>
+                          {feature.text && <p className="mt-1 leading-relaxed text-ink-soft">{feature.text}</p>}
                         </div>
                       </li>
                     ))}
