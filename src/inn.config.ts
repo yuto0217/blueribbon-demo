@@ -76,9 +76,9 @@ export const inn: InnConfig = {
     lead: null,
     features: [
       { title: '人数', text: '2〜5名のお部屋があります。' },
-      { title: 'ベッド', text: 'ツイン、5ベッド、ダブルの\nお部屋があります。' },
+      { title: 'ベッド', text: 'ツイン、5ベッド、ダブルのお部屋があります。' },
       { title: 'Wi-Fi', text: '全室でお使いいただけます。' },
-      { title: 'ご注意事項', text: '館内は禁煙です。\nペットとのご宿泊はできません。' },
+      { title: 'ご注意事項', text: '館内は禁煙です。ペットとのご宿泊はできません。' },
     ],
     photos: [
       { label: 'ツインのお部屋の写真', alt: 'ベッドが2つの洋室', tone: 'wood' },
@@ -89,9 +89,9 @@ export const inn: InnConfig = {
     title: 'お料理',
     lead: null,
     features: [
-      { title: '夕食は洋食のコース料理', text: 'オードブルからデザート・\nコーヒーまでのコースです。' },
+      { title: '夕食は洋食のコース料理', text: 'オードブルからデザート・コーヒーまでのコースです。' },
       { title: 'アレルギー・苦手な食材', text: 'ご予約時にお知らせください。' },
-      { title: 'お子様のお食事', text: '小学2年生くらいまでの量で\nご用意できます。' },
+      { title: 'お子様のお食事', text: '小学2年生くらいまでの量でご用意できます。' },
     ],
     photos: [
       { label: 'コース料理のオードブルの写真', alt: '洋食のコースのオードブル', tone: 'kaki' },
@@ -102,8 +102,8 @@ export const inn: InnConfig = {
     title: 'お風呂',
     lead: null,
     features: [
-      { title: 'お風呂は3つ', text: '滝のある露天風呂が1つ、\n内風呂が2つです。' },
-      { title: '貸切可能', text: '空いていれば、内鍵をかけて\n貸切でお使いいただけます。' },
+      { title: 'お風呂は3つ', text: '滝のある露天風呂が1つ、内風呂が2つです。' },
+      { title: '貸切可能', text: '空いていれば、内鍵をかけて貸切でお使いいただけます。' },
       { title: 'お風呂付きのお部屋は1室', text: '103号室はユニットバス付きです。' },
     ],
     photos: [
@@ -111,7 +111,7 @@ export const inn: InnConfig = {
       { label: '内風呂の写真', alt: '貸切で使える内風呂', tone: 'sky' },
     ],
   },
-  access: '東富士五湖道路 山中湖ICから\n車で約10分（国道138号）。\n東名高速 御殿場ICから約30分',
+  access: '東富士五湖道路 山中湖ICから車で約10分（国道138号）。東名高速 御殿場ICから約30分',
   address: '山梨県南都留郡山中湖村平野508-797',
   // 公式サイトの空室情報のページ（宿の予約は電話・メール・公式サイトのフォーム）
   bookingUrl: 'https://pension-blueribbon.com/kuhshitu.html',

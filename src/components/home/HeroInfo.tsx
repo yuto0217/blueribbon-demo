@@ -61,7 +61,7 @@ export function HeroInfo() {
             {site.access && (
               <p className="flex items-start gap-3 text-lg leading-relaxed">
                 <Icon name="train" className="mt-1 size-6 shrink-0 text-mori" />
-                <span className="min-w-0 whitespace-pre-line [overflow-wrap:anywhere]">{site.access}</span>
+                <span className="min-w-0 [overflow-wrap:anywhere]">{site.access}</span>
               </p>
             )}
             <MapEmbed />

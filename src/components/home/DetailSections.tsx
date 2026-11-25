@@ -40,7 +40,7 @@ export function DetailSections() {
                         <Icon name="check" className="mt-0.5 size-6 shrink-0 text-kaki" />
                         <div className="min-w-0">
                           <p className="text-lg leading-snug font-medium text-mori-dark">{feature.title}</p>
-                          {feature.text && <p className="mt-1 leading-relaxed whitespace-pre-line text-ink-soft">{feature.text}</p>}
+                          {feature.text && <p className="mt-1 leading-relaxed text-ink-soft">{feature.text}</p>}
                         </div>
                       </li>
                     ))}
