@@ -2,6 +2,7 @@ import { useUi } from '../../content/i18n'
 import { useSite } from '../../content/site'
 import { MapEmbed } from '../sections/MapEmbed'
 import { Icon } from '../ui/Icon'
+import { Phrase } from '../ui/Phrase'
 import { Container, Section, SectionHeading } from '../ui/Section'
 import { DetailSections } from './DetailSections'
 import { PointsSlider } from './PointsSlider'
@@ -61,7 +62,7 @@ export function HeroInfo() {
             {site.access && (
               <p className="flex items-start gap-3 text-lg leading-relaxed">
                 <Icon name="train" className="mt-1 size-6 shrink-0 text-mori" />
-                <span className="min-w-0 [overflow-wrap:anywhere]">{site.access}</span>
+                <span className="min-w-0 whitespace-pre-line"><Phrase text={site.access} /></span>
               </p>
             )}
             <MapEmbed />
