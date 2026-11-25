@@ -41,7 +41,7 @@ export function HeroInfo() {
                     <h3 className="mt-2 text-2xl leading-snug font-medium text-mori-dark sm:text-[1.75rem]">
                       <span className={site.lang === 'ja' ? 'whitespace-nowrap max-sm:text-[min(1.25rem,5.2vw)]' : ''}>{point.text}</span>
                     </h3>
-                    {point.description && <p className="mt-4 max-w-3xl text-justify text-lg leading-loose">{point.description}</p>}
+                    {point.description && <p className="mt-4 max-w-3xl text-lg leading-loose"><Phrase text={point.description} /></p>}
                   </div>
                 </Container>
                 <div className={`order-first mb-8 lg:mb-0 ${i % 2 === 1 ? '' : 'lg:order-last'}`}>

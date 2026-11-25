@@ -3,6 +3,7 @@ import { useSite } from '../../content/site'
 import { BookingLink } from '../ui/BookingLink'
 import { Icon } from '../ui/Icon'
 import { Photo } from '../ui/Photo'
+import { Phrase } from '../ui/Phrase'
 import { useAutoSlide } from '../ui/useAutoSlide'
 
 /** トップページ冒頭の写真のスライド（動きを減らす設定のときは自動で切り替えない） */
@@ -40,13 +41,13 @@ export function HeroSlider() {
         <div className="absolute inset-x-0 bottom-0 px-5 pb-6 sm:px-8 lg:mx-auto lg:max-w-7xl lg:px-8 lg:pb-20">
           <h1 id="hero-title" className="text-[2.25rem] leading-[1.4] font-medium sm:text-6xl">
             <span className={`mb-2 block font-sans text-base ${site.lang === 'en' ? 'tracking-wider' : 'tracking-[0.3em]'} text-kaki-light sm:text-lg`}>{site.area}</span>
-            {site.name}
+            <Phrase text={site.name} />
           </h1>
           {site.catchcopy && site.catchcopy.length > 0 ? (
             <p className="mt-4 max-w-xl font-serif text-xl leading-[1.9] font-medium text-white sm:text-2xl">
               {site.catchcopy.map((line, i) => (
                 <span key={i} className="block">
-                  {line}
+                  <Phrase text={line} />
                 </span>
               ))}
             </p>
