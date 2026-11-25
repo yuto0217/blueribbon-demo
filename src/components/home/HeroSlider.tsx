@@ -40,7 +40,13 @@ export function HeroSlider() {
         <div className="absolute inset-x-0 bottom-0 px-5 pb-6 sm:px-8 lg:mx-auto lg:max-w-7xl lg:px-8 lg:pb-20">
           <h1 id="hero-title" className="text-[2.25rem] leading-[1.4] font-medium sm:text-6xl">
             <span className={`mb-2 block font-sans text-base ${site.lang === 'en' ? 'tracking-wider' : 'tracking-[0.3em]'} text-kaki-light sm:text-lg`}>{site.area}</span>
-            {site.name}
+            {/* 宿名は空白の位置でだけ改行する（「ペンション ブ／ルーリボン」のように言葉の途中で切れないように） */}
+            {site.name.split(' ').map((word, i) => (
+              <span key={i}>
+                {i > 0 && ' '}
+                <span className="inline-block">{word}</span>
+              </span>
+            ))}
           </h1>
           {site.catchcopy && site.catchcopy.length > 0 ? (
             <p className="mt-4 max-w-xl font-serif text-xl leading-[1.9] font-medium text-white sm:text-2xl">
