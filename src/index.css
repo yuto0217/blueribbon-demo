@@ -103,8 +103,7 @@
     line-height: 1.9;
     letter-spacing: 0.02em;
     font-synthesis-weight: none;
-    /* 日本語を文節で改行する（対応ブラウザのみ）。長い言葉ははみ出さないよう折り返す */
-    word-break: auto-phrase;
+    /* 日本語はふつうに1文字ずつ折り返す（文節での改行はしない。Yuto の指示、2026年11月25日）。長い言葉ははみ出さないよう折り返す */
     overflow-wrap: break-word;
     line-break: strict;
   }

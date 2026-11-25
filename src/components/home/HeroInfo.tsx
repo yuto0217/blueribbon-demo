@@ -30,7 +30,7 @@ export function HeroInfo() {
             {site.points.map((point, i) => (
               <li
                 key={i}
-                className={`lg:grid lg:items-center lg:gap-14 ${i % 2 === 1 ? 'lg:grid-cols-[3fr_2fr]' : 'lg:grid-cols-[2fr_3fr]'}`}
+                className={`flex flex-col lg:grid lg:items-center lg:gap-14 ${i % 2 === 1 ? 'lg:grid-cols-[3fr_2fr]' : 'lg:grid-cols-[2fr_3fr]'}`}
               >
                 <Container className="lg:px-0">
                   <div>
@@ -43,7 +43,7 @@ export function HeroInfo() {
                     {point.description && <p className="mt-4 max-w-3xl text-justify text-lg leading-loose">{point.description}</p>}
                   </div>
                 </Container>
-                <div className={`mt-8 lg:mt-0 ${i % 2 === 1 ? 'lg:order-first' : ''}`}>
+                <div className={`order-first mb-8 lg:mb-0 ${i % 2 === 1 ? '' : 'lg:order-last'}`}>
                   <PointsSlider photos={point.photos} label={point.text} />
                 </div>
               </li>
