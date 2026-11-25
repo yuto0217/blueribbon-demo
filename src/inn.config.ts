@@ -76,7 +76,7 @@ export const inn: InnConfig = {
     lead: null,
     features: [
       { title: '人数', text: '2〜5名のお部屋があります。' },
-      { title: 'ベッド', text: 'ツインから5ベッドまでのお部屋があります。' },
+      { title: 'ベッド', text: 'ツイン、5ベッド、ダブルのお部屋があります。' },
       { title: 'Wi-Fi', text: 'すべてのお部屋でお使いいただけます。' },
       { title: 'ご注意事項', text: '館内禁煙、ペットとのご宿泊はお受けしておりません。' },
     ],
